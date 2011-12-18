@@ -144,6 +144,9 @@ set showfulltag
 " remove trailing whitespaces when saving source files
 " autocmd BufWritePre *.{cpp,h,inl,mmp,inf,def} :%s/\s\+$//e
 
+" highlight spaces at end of lines
+match Todo /\s\+$/
+
 "
 " Jump to beginning/end of epoc c++ functions
 "
