@@ -124,6 +124,8 @@ syntax on
 
 autocmd BufRead,BufNewFile *.go set filetype=go
 
+autocmd BufRead,BufNewFile *.{cpp,h,inl,c} set colorcolumn=80
+
 " coding styles
 "
 command IndentEpoc  set cino={1sf1st0:0g-1s
