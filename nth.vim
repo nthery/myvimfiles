@@ -94,25 +94,6 @@ set smartindent
 " line
 set smarttab
 
-set shiftwidth=4
-set softtabstop=4
-
-" always insert spaces
-set expandtab
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Folding
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set foldmethod=syntax
-
-" unfold when ...
-set foldopen=mark,percent,quickfix,search,tag
-
-" start editing without folds
-set foldlevelstart=99
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Programming
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,17 +103,19 @@ filetype plugin indent on
 
 syntax on
 
-autocmd BufRead,BufNewFile *.go set filetype=go
+function! EnableSyntaxFolding()
+    setl foldmethod=syntax
 
-autocmd BufRead,BufNewFile *.{cpp,h,inl,c} set colorcolumn=80
+    " unfold when ...
+    setl foldopen=mark,percent,quickfix,search,tag
+
+    " start editing without folds
+    setl foldlevelstart=99
+endfunction
 
 " coding styles
 "
 command IndentEpoc  set cino={1sf1st0:0g-1s
-
-command IndentNth set cino=g0:0
-
-IndentNth
 
 " tags
 
@@ -140,9 +123,6 @@ set tags=.
 
 set showfulltag
 
-
-" remove trailing whitespaces when saving source files
-" autocmd BufWritePre *.{cpp,h,inl,mmp,inf,def} :%s/\s\+$//e
 
 " highlight spaces at end of lines
 match Todo /\s\+$/
@@ -175,17 +155,12 @@ function GoToNextEndEpocFn()
     endif
 endfunction
 
-nmap <silent> [e :call GoToPrevBegEpocFn()<CR>
-nmap <silent> [E :call GoToPrevEndEpocFn()<CR>
-nmap <silent> ]e :call GoToNextBegEpocFn()<CR>
-nmap <silent> ]E :call GoToNextEndEpocFn()<CR>
-
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FSwitch plugin - switch between header and implementation files
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-au BufEnter *.{cpp,c} let b:fswitchdst = 'h' | let b:fswitchlocs = '.'
-au BufEnter *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
+au BufNewFile,BufRead *.{cpp,c} let b:fswitchdst = 'h' | let b:fswitchlocs = '.'
+au BufNewFile,BufRead *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
 let fsnonewfiles="on"
 
 " Switch to the file and load it into the current window 
@@ -215,27 +190,6 @@ nmap <silent> <Leader>oj :FSBelow<cr>
 " Switch to the file and load it into a new window split below 
 nmap <silent> <Leader>oJ :FSSplitBelow<cr>
 
-
-"
-" Do not indent namespace
-"
-
-function! IndentNamespace()
-  let l:cline_num = line('.')
-  let l:pline_num = prevnonblank(l:cline_num - 1)
-  let l:pline = getline(l:pline_num)
-  let l:retv = cindent('.')
-  while l:pline =~# '\(^\s*{\s*\|^\s*//\|^\s*/\*\|\*/\s*$\)'
-    let l:pline_num = prevnonblank(l:pline_num - 1)
-    let l:pline = getline(l:pline_num)
-  endwhile
-  if l:pline =~# '^\s*namespace.*'
-    let l:retv = 0
-  endif
-  return l:retv
-endfunction
-
-au BufNewFile,BufEnter *.{cpp,h} set indentexpr=IndentNamespace()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LustyJuggler plugin
