@@ -64,12 +64,17 @@ map <Leader>n :noh<CR>
 " show matching brace
 set showmatch
 
+"save current file on various commands such as :make
+set autowrite
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Random mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 map <F4> :cn<return>
 map <S-F4> :cp<return>
+
+map <Leader>m :make<return>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
