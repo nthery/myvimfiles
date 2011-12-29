@@ -8,7 +8,9 @@ setl softtabstop=4
 setl expandtab
 
 "
-" Do not indent namespace
+" Do not indent namespaces.
+"
+" Copied from vimscript#2636.
 "
 
 function! IndentNamespace()
