@@ -1,4 +1,6 @@
-setl colorcolumn=80
+if exists("&colorcolumn")
+    setl colorcolumn=80
+endif
 setl textwidth=80
 
 call EnableSyntaxFolding()
