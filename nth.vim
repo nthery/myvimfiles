@@ -76,6 +76,16 @@ map <S-F4> :cp<return>
 
 map <Leader>m :make<return>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Les gouts et les couleurs
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" vintage style
+"colorscheme peachpuff
+
+set background=dark
+"set background=light
+colorscheme solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI-specifics
@@ -83,7 +93,6 @@ map <Leader>m :make<return>
 
 " MacVim registers as "Vim"
 if v:progname =~? "gvim" || v:progname ==# "Vim"
-    colorscheme peachpuff
     set lines=70
     set columns=80
 endif
