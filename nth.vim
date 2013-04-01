@@ -98,7 +98,7 @@ colorscheme solarized
 
 " MacVim registers as "Vim"
 if v:progname =~? "gvim" || v:progname ==# "Vim"
-    set lines=70
+    set lines=55
     set columns=80
 endif
 
