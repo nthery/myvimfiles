@@ -205,19 +205,3 @@ nmap <silent> <Leader>oj :FSBelow<cr>
 
 " Switch to the file and load it into a new window split below 
 nmap <silent> <Leader>oJ :FSSplitBelow<cr>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LustyJuggler plugin
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" This plugin allows to switch quickly between buffers.
-" Start it with <Leader>lj
-
-" ... or this
-map <Leader>g :LustyJuggler<CR>
-
-" This plugin requires ruby.  Simply ignore it if ruby support to compiled in.
-let g:LustyJugglerSuppressRubyWarning = 1
-
-
