@@ -1,6 +1,11 @@
 " embrace the future!
 set nocompatible
 
+" Pathogen
+" Must be before 'syntax on'
+runtime bundle/pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Random options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
