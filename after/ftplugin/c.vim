@@ -10,4 +10,4 @@ setl softtabstop=8
 setl noexpandtab
 
 setl cindent
-setl cino=:0
+setl cino=:0+2s
