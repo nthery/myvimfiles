@@ -205,3 +205,38 @@ nmap <silent> <Leader>oj :FSBelow<cr>
 
 " Switch to the file and load it into a new window split below 
 nmap <silent> <Leader>oJ :FSSplitBelow<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Todo list helpers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let s:todoMarkers = [ 'TODO', 'NEXT', 'ONGOING', 'DONE' ]
+
+function! CycleTodoMarker()
+    " Try to match marker at beginning of line
+    let l:cline = getline('.')
+    let l:ml = matchlist(l:cline, '^\s*\([A-Z]\+\): ')
+
+    " No match? insert initial marker.
+    if ml == []
+        let l:ml = matchlist(l:cline, '^\(\s*\)\(.*\)')
+        call setline('.', ml[1] . s:todoMarkers[0] . ': ' . ml[2])
+        return
+    endif
+
+    " Unknown marker? do nothing
+    let l:i = index(s:todoMarkers, ml[1])
+    if l:i == -1
+        return
+    endif
+
+    " Last marker? remove it
+    let l:i += 1
+    if l:i == len(s:todoMarkers)
+        call setline('.', substitute(l:cline, l:ml[1] . ': ', '', ''))
+        return
+    endif
+
+    " Replace current marker with next one
+    call setline('.', substitute(l:cline, l:ml[1], s:todoMarkers[l:i], ''))
+endfunction
