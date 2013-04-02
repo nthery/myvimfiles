@@ -23,7 +23,7 @@ set history=500
 set ignorecase smartcase
 
 " remove toolbar
-set guioptions=gm
+set guioptions=gmc
 
 " display possible completions above command line
 set wildmenu
