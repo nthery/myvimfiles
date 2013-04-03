@@ -1,4 +1,9 @@
 This is my personal vim configuration.
 
+Plugins are kept in submodules so after cloning this do:
+
+	git submodule init
+	git submodule update
+
 To use clone in ~/.vim/ (unix) or ~/vimfiles (Windows) and create .vimrc that
 sources nth.vim.
