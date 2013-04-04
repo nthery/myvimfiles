@@ -240,3 +240,9 @@ function! CycleTodoMarker()
     " Replace current marker with next one
     call setline('.', substitute(l:cline, l:ml[1], s:todoMarkers[l:i], ''))
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERD Tree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nmap <Leader>nt :NERDTree<cr>
