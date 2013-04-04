@@ -15,7 +15,7 @@
 	url = git://github.com/derekwyatt/vim-fswitch.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
