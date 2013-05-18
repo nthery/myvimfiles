@@ -72,6 +72,9 @@ set showmatch
 "save current file on various commands such as :make
 set autowrite
 
+" customize non-visible characters showed by 'set list'
+set listchars=tab:▸\ ,eol:¬
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Random mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
