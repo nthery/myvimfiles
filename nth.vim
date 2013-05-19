@@ -10,6 +10,8 @@ execute pathogen#infect()
 " Random options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set number
+
 " allow backspacing over ...
 set backspace=indent,eol,start
 
@@ -99,7 +101,7 @@ colorscheme solarized
 " MacVim registers as "Vim"
 if v:progname =~? "gvim" || v:progname ==# "Vim"
     set lines=55
-    set columns=80
+    set columns=84
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
