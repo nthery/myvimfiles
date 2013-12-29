@@ -33,4 +33,4 @@
 	url = git://github.com/tpope/vim-vinegar.git
 [submodule "bundle/vim-signify"]
 	path = bundle/vim-signify
-	url = https://github.com/mhinz/vim-signify
+	url = git@github.com:mhinz/vim-signify.git
