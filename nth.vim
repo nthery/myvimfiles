@@ -75,7 +75,8 @@ set showmatch
 set autowrite
 
 " customize non-visible characters showed by 'set list'
-set listchars=tab:▸\ ,eol:¬
+" commented out because not supported by most versions I use
+"set listchars=tab:▸\ ,eol:¬
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Random mappings
