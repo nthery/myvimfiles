@@ -37,7 +37,7 @@ setl indentexpr=IndentNamespace()
 "
 
 setl cindent
-setl cino=:0g0
+setl cino=:0g0(0
 
 "
 " Navigate epoc c++ functions 
