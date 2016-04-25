@@ -100,8 +100,8 @@ map <Leader>m :Make<return>
 " vintage style
 "colorscheme peachpuff
 
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 colorscheme solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
