@@ -91,7 +91,7 @@ set mouse=a
 " Random mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-map <Leader>m :make<return>
+map <Leader>m :Make<return>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Les gouts et les couleurs
