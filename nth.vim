@@ -74,9 +74,15 @@ set showmatch
 "save current file on various commands such as :make
 set autowrite
 
+" automagically reload files modified outside vim
+set autoread
+
 " customize non-visible characters showed by 'set list'
 " commented out because not supported by most versions I use
 "set listchars=tab:▸\ ,eol:¬
+
+" increase command history
+set history=1000
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Resize vim windows from tmux
