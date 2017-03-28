@@ -150,10 +150,6 @@ function! EnableSyntaxFolding()
     setl foldlevelstart=99
 endfunction
 
-" coding styles
-"
-command IndentEpoc  set cino={1sf1st0:0g-1s
-
 " tags
 
 set tags=.
@@ -163,34 +159,6 @@ set showfulltag
 
 " highlight spaces at end of lines
 match Todo /\s\+$/
-
-"
-" Jump to beginning/end of epoc c++ functions
-"
-
-function GoToPrevBegEpocFn()
-    if search('^\(    \|\t\){', "bsWe") == 0
-        echo "epoc function beginning not found"
-    endif
-endfunction
-
-function GoToPrevEndEpocFn()
-    if search('^\(    \|\t\)}', "bsWe") == 0
-        echo "epoc function end not found"
-    endif
-endfunction
-
-function GoToNextBegEpocFn()
-    if search('^\(    \|\t\){', "sWe") == 0
-        echo "epoc function beginning not found"
-    endif
-endfunction
-
-function GoToNextEndEpocFn()
-    if search('^\(    \|\t\)}', "sWe") == 0
-        echo "epoc function end not found"
-    endif
-endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FSwitch plugin - switch between header and implementation files
