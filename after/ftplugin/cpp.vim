@@ -38,12 +38,3 @@ setl indentexpr=IndentNamespace()
 
 setl cindent
 setl cino=:0g0(0
-
-"
-" Navigate epoc c++ functions 
-"
-
-nmap <silent> <buffer> [e :call GoToPrevBegEpocFn()<CR>
-nmap <silent> <buffer> [E :call GoToPrevEndEpocFn()<CR>
-nmap <silent> <buffer> ]e :call GoToNextBegEpocFn()<CR>
-nmap <silent> <buffer> ]E :call GoToNextEndEpocFn()<CR>
