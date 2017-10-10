@@ -177,7 +177,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 au BufNewFile,BufRead *.{cpp,c} let b:fswitchdst = 'h' | let b:fswitchlocs = '.'
-au BufNewFile,BufRead *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
+au BufNewFile,BufRead *.{hpp,h} let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
 let fsnonewfiles="on"
 
 " Switch to the file and load it into the current window 
