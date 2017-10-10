@@ -151,14 +151,26 @@ function! EnableSyntaxFolding()
 endfunction
 
 " tags
-
 set tags=.
-
 set showfulltag
 
+" Quickly change indentation style
+command! -nargs=1 IndentTab set sts=<args> ts=<args> sw=<args> noet
+command! -nargs=1 IndentSpace set sts=<args> sw=<args> et
+
+" Beautify multi-line C macros
+command! -range -nargs=1 AlignTrailingBackslash let atslash=@/ | <line1>,<line2> s!\s*\\!\=repeat(' ', <args> - col('.') - 2).' \'! | let @/=atslash
 
 " highlight spaces at end of lines
 match Todo /\s\+$/
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ack, Ag and co
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if executable("ag") == 1
+    let g:ackprg='ag --vimgrep'
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FSwitch plugin - switch between header and implementation files
