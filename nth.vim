@@ -6,6 +6,9 @@ set nocompatible
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+let mapleader = "\\"
+let maplocalleader = "\\"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Random options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -155,8 +158,8 @@ set tags=.
 set showfulltag
 
 " Quickly change indentation style
-command! -nargs=1 IndentTab set sts=<args> ts=<args> sw=<args> noet
-command! -nargs=1 IndentSpace set sts=<args> sw=<args> et
+command! -nargs=1 IndentTab setlocal sts=<args> ts=<args> sw=<args> noet
+command! -nargs=1 IndentSpace setlocal sts=<args> sw=<args> et
 
 " Beautify multi-line C macros
 command! -range -nargs=1 AlignTrailingBackslash let atslash=@/ | <line1>,<line2> s!\s*\\!\=repeat(' ', <args> - col('.') - 2).' \'! | let @/=atslash
