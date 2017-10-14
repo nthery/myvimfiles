@@ -164,6 +164,40 @@ command! -range -nargs=1 AlignTrailingBackslash let atslash=@/ | <line1>,<line2>
 " highlight spaces at end of lines
 match Todo /\s\+$/
 
+" Alternative [[ and ]] implementation for styles where '{' is not at
+" beginning of line.  Match alphabetic character in first column.
+function! GoToTopLevelDecl(backward)
+    "  Disable search highlighting
+    let l:hl = &hlsearch
+    let &hlsearch=0
+
+    " Search for next/previous top-level declaration.
+    " n: do not move the cursor because we want to update the jump list.
+    " W: Do not wrap around beginning/end.
+    let l:flags = 'nW'
+    if a:backward
+        let l:flags .= 'b'
+    endif
+    let l:hit = search('\v^\a', l:flags)
+
+    " Jump to hit if any or beginning/end of file.
+    if l:hit !=# 0
+        execute "normal " . l:hit . "G"
+    else
+        if a:backward
+            normal gg
+        else
+            normal G
+        endif
+    endif
+
+    "  Restore search highlighting.
+    let &hlsearch=l:hl
+endfunction
+
+nnoremap [[ :call GoToTopLevelDecl(1)<cr>
+nnoremap ]] :call GoToTopLevelDecl(0)<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ack, Ag and co
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
