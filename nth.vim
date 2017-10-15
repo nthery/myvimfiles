@@ -288,6 +288,62 @@ function! TodoMode()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General fold-related customizations
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Remove ugly underline on folds.
+highlight Folded term=bold cterm=bold ctermfg=12 ctermbg=0 guifg=Cyan guibg=DarkGrey
+
+" Remove trailing '----' on folds.
+set fillchars=fold:\   
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Steve Losh's indent folding mode
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Copied from "Learn vimscript the hard way" (c) Steve Losh
+
+function! IndentLevel(lnum)
+    return indent(a:lnum) / &shiftwidth
+endfunction
+
+function! NextNonBlankLine(lnum)
+    let numlines = line('$')
+    let current = a:lnum + 1
+
+    while current <= numlines
+        if getline(current) =~? '\v\S'
+            return current
+        endif
+
+        let current += 1
+    endwhile
+
+    return -2
+endfunction
+
+function! SteveLoshIndentFoldExpr(lnum)
+    if getline(a:lnum) =~? '\v^\s*$'
+        return '-1'
+    endif
+
+    let this_indent = IndentLevel(a:lnum)
+    let next_indent = IndentLevel(NextNonBlankLine(a:lnum))
+
+    if next_indent == this_indent
+        return this_indent
+    elseif next_indent < this_indent
+        return this_indent
+    elseif next_indent > this_indent
+        return '>' . next_indent
+    endif
+endfunction
+
+function! SetSteveLoshIndentFolding()
+    setlocal foldexpr=SteveLoshIndentFoldExpr(v:lnum)
+    setlocal foldmethod=expr
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
