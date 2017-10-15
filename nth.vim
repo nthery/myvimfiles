@@ -250,20 +250,20 @@ nmap <silent> <Leader>oJ :FSSplitBelow<cr>
 
 let s:todoMarkers = [ '_', '*', 'X' ]
 
-function! CycleTodoMarker()
+function! CycleTodoMarker(lnum)
     " Try to match marker at beginning of line
-    let l:cline = getline('.')
+    let l:cline = getline(a:lnum)
     let l:ml = matchlist(l:cline, '\v^\s*\[(.)\]')
 
     " No match? insert initial marker.
     if ml == []
         let l:ml = matchlist(l:cline, '\v^(\s*)(.*)')
-        call setline('.', ml[1] . '[' . s:todoMarkers[0] . '] ' . ml[2])
+        call setline(a:lnum, l:ml[1] . '[' . s:todoMarkers[0] . '] ' . l:ml[2])
         return
     endif
 
     " Unknown marker? do nothing
-    let l:i = index(s:todoMarkers, ml[1])
+    let l:i = index(s:todoMarkers, l:ml[1])
     if l:i == -1
         return
     endif
@@ -271,17 +271,17 @@ function! CycleTodoMarker()
     " Last marker? remove it
     let l:i += 1
     if l:i == len(s:todoMarkers)
-        echom '[' . l:ml[1] . '] '
-        call setline('.', substitute(l:cline, '\[[^]]\] ', '', ''))
+        call setline(a:lnum, substitute(l:cline, '\[[^]]\] ', '', ''))
         return
     endif
 
     " Replace current marker with next one
-    call setline('.', substitute(l:cline, l:ml[1], s:todoMarkers[l:i], ''))
+    call setline(a:lnum, substitute(l:cline, l:ml[1], s:todoMarkers[l:i], ''))
 endfunction
 
 function! TodoMode()
-    noremap <localleader>t :call CycleTodoMarker()<cr>
+    noremap <localleader>t :call CycleTodoMarker('.')<cr>
+    vnoremap <localleader>t :call CycleTodoMarker('.')<cr>
     IndentSpace 4
     setlocal autoindent
     setlocal foldmethod=indent
