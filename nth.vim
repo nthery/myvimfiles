@@ -213,8 +213,10 @@ endif
 " FSwitch plugin - switch between header and implementation files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-au BufNewFile,BufRead *.{cpp,c} let b:fswitchdst = 'h' | let b:fswitchlocs = '.'
-au BufNewFile,BufRead *.{hpp,h} let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
+au BufNewFile,BufRead *.c let b:fswitchdst = 'h' | let b:fswitchlocs = '.'
+au BufNewFile,BufRead *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
+au BufNewFile,BufRead *.hpp let b:fswitchdst = 'cpp' | let b:fswitchlocs = '.'
+au BufNewFile,BufRead *.h let b:fswitchdst = 'c,cpp' | let b:fswitchlocs = '.'
 let fsnonewfiles="on"
 
 " Switch to the file and load it into the current window 
@@ -285,6 +287,7 @@ function! TodoMode()
     IndentSpace 4
     setlocal autoindent
     setlocal foldmethod=indent
+    call SetSteveLoshIndentFolding()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
