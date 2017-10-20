@@ -110,7 +110,15 @@ map <Leader>m :Make<return>
 "colorscheme peachpuff
 
 set background=dark
-"set background=light
+let s:next_bg_idx = 1
+
+function! ToggleBackground()
+    let &background = [ 'dark', 'light'][s:next_bg_idx]
+    let s:next_bg_idx = 1 - s:next_bg_idx
+endfunction
+
+command! ToogleBg :call ToggleBackground()
+
 colorscheme solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
