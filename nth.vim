@@ -15,6 +15,11 @@ let maplocalleader = "\\"
 
 set number
 
+" Relative line numbering is quite handy to move around so enable it by
+" default and add mapping to revert quickly to absolute numbering.
+set relativenumber
+nnoremap <leader>r :silent set relativenumber!<cr>
+
 " allow backspacing over ...
 set backspace=indent,eol,start
 
