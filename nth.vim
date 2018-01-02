@@ -216,6 +216,14 @@ endfunction
 nnoremap [[ :call GoToTopLevelDecl(1)<cr>
 nnoremap ]] :call GoToTopLevelDecl(0)<cr>
 
+" Skip comment token when joining lines.
+"
+" // toto  ---> // toto titi
+" // titi
+if v:version > 703 || v:version == 703 && has('patch541')
+    set formatoptions+=j
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ack, Ag and co
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
