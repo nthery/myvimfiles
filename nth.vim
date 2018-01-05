@@ -176,6 +176,9 @@ set showfulltag
 command! -nargs=1 IndentTab setlocal sts=<args> ts=<args> sw=<args> noet
 command! -nargs=1 IndentSpace setlocal sts=<args> sw=<args> et
 
+" Populate args with all C/C++ files in given directory trees
+command! -nargs=+ ArgsC -complete=dir args `find <args> -name '*.[ch]' -o -name '*.[ch]pp'`
+
 " Beautify multi-line C macros
 command! -range -nargs=1 AlignTrailingBackslash let atslash=@/ | <line1>,<line2> s!\s*\\!\=repeat(' ', <args> - col('.') - 2).' \'! | let @/=atslash
 
