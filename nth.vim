@@ -124,7 +124,7 @@ function! ToggleBackground()
     let s:next_bg_idx = 1 - s:next_bg_idx
 endfunction
 
-command! ToogleBg :call ToggleBackground()
+command! ToggleBg :call ToggleBackground()
 
 colorscheme solarized
 
