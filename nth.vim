@@ -199,7 +199,14 @@ function! GoToTopLevelDecl(backward)
     if a:backward
         let l:flags .= 'b'
     endif
-    let l:hit = search('\v^\a', l:flags)
+    " Match following flavors of function definitions:
+    " void f(int n) {
+    " void f(int n)
+    " void f(
+    "   int n) {
+    " void f(int n,
+    "        double d) {
+    let l:hit = search('\v^\i.*(\{|,|\(|\))\s*$', l:flags)
 
     " Jump to hit if any or beginning/end of file.
     if l:hit !=# 0
