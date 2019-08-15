@@ -25,9 +25,6 @@ set backspace=indent,eol,start
 " define amount of stuff saved in .viminfo
 set viminfo=@100,/100,:100,'100,f1,<500
 
-" remember last commands
-set history=500
-
 " search are case-insensitive except when pattern contains uppercase chars
 set ignorecase smartcase
 
