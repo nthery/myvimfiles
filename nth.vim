@@ -16,9 +16,8 @@ let maplocalleader = "\\"
 set number
 
 " Relative line numbering is quite handy to move around so enable it by
-" default and add mapping to revert quickly to absolute numbering.
+" default (unimpaired yor mapping toggles it).
 set relativenumber
-nnoremap <leader>r :silent set relativenumber!<cr>
 
 " allow backspacing over ...
 set backspace=indent,eol,start
@@ -70,11 +69,9 @@ set showcmd
 " incremental search is cool
 set incsearch
 
-" highlight occurences found during last search
+" highlight occurences found during last search (unimpaired yoh mapping
+" toggles it).
 set hlsearch
-
-" suppress current highlighting
-map <Leader>n :noh<CR>
 
 " show matching brace
 set showmatch
@@ -115,16 +112,6 @@ map <Leader>m :Make<return>
 
 " vintage style
 "colorscheme peachpuff
-
-set background=dark
-let s:next_bg_idx = 1
-
-function! ToggleBackground()
-    let &background = [ 'dark', 'light'][s:next_bg_idx]
-    let s:next_bg_idx = 1 - s:next_bg_idx
-endfunction
-
-command! ToggleBg :call ToggleBackground()
 
 colorscheme solarized
 
