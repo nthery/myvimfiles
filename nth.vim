@@ -66,9 +66,11 @@ set showcmd
 " incremental search is cool
 set incsearch
 
-" highlight occurences found during last search (unimpaired yoh mapping
-" toggles it).
-set hlsearch
+" highlight occurences found during last search
+ set hlsearch
+ 
+" suppress current highlighting
+nnoremap <leader>n :nohlsearch<cr>
 
 " show matching brace
 set showmatch
