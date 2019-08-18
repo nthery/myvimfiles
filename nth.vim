@@ -250,38 +250,42 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FSwitch plugin - switch between header and implementation files {{{
 
-au BufNewFile,BufRead *.c let b:fswitchdst = 'h' | let b:fswitchlocs = '.'
-au BufNewFile,BufRead *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
-au BufNewFile,BufRead *.hpp let b:fswitchdst = 'cpp' | let b:fswitchlocs = '.'
-au BufNewFile,BufRead *.h let b:fswitchdst = 'c,cpp' | let b:fswitchlocs = '.'
+augroup fswitch
+    autocmd!
+    autocmd BufNewFile,BufRead *.c let b:fswitchdst = 'h' | let b:fswitchlocs = '.'
+    autocmd BufNewFile,BufRead *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
+    autocmd BufNewFile,BufRead *.hpp let b:fswitchdst = 'cpp' | let b:fswitchlocs = '.'
+    autocmd BufNewFile,BufRead *.h let b:fswitchdst = 'c,cpp' | let b:fswitchlocs = '.'
+augroup END
+
 let fsnonewfiles="on"
 
 " Switch to the file and load it into the current window 
-nmap <silent> <Leader>of :FSHere<cr>
+nnoremap <silent> <leader>of :FSHere<cr>
 
 " Switch to the file and load it into the window on the right 
-nmap <silent> <Leader>ol :FSRight<cr>
+nnoremap <silent> <leader>ol :FSRight<cr>
 
 " Switch to the file and load it into a new window split on the right 
-nmap <silent> <Leader>oL :FSSplitRight<cr>
+nnoremap <silent> <leader>oL :FSSplitRight<cr>
 
 " Switch to the file and load it into the window on the left 
-nmap <silent> <Leader>oh :FSLeft<cr>
+nnoremap <silent> <leader>oh :FSLeft<cr>
 
 " Switch to the file and load it into a new window split on the left 
-nmap <silent> <Leader>oH :FSSplitLeft<cr>
+nnoremap <silent> <leader>oH :FSSplitLeft<cr>
 
 " Switch to the file and load it into the window above 
-nmap <silent> <Leader>ok :FSAbove<cr>
+nnoremap <silent> <leader>ok :FSAbove<cr>
 
 " Switch to the file and load it into a new window split above 
-nmap <silent> <Leader>oK :FSSplitAbove<cr>
+nnoremap <silent> <leader>oK :FSSplitAbove<cr>
 
 " Switch to the file and load it into the window below 
-nmap <silent> <Leader>oj :FSBelow<cr>
+nnoremap <silent> <leader>oj :FSBelow<cr>
 
 " Switch to the file and load it into a new window split below 
-nmap <silent> <Leader>oJ :FSSplitBelow<cr>
+nnoremap <silent> <leader>oJ :FSSplitBelow<cr>
 
 " }}}
 
@@ -407,10 +411,13 @@ endfunction
 
 let g:go_fmt_command = "goimports"
 
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
+augroup filetype_go
+    autocmd!
+    autocmd FileType go nnoremap <leader>r <Plug>(go-run)
+    autocmd FileType go nnoremap <leader>b <Plug>(go-build)
+    autocmd FileType go nnoremap <leader>t <Plug>(go-test)
+    autocmd FileType go nnoremap <leader>c <Plug>(go-coverage)
+augroup END
 
 " }}}
 
