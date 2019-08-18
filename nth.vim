@@ -245,6 +245,8 @@ if executable("ag") == 1
     let g:ackprg='ag --vimgrep'
 endif
 
+nnoremap <leader>a :Ack!<space>
+
 " }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
