@@ -6,20 +6,31 @@ set nocompatible
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+" Try to recognize file types and load associated plugins and indent files.
+filetype plugin indent on
+
+syntax on
+
 let mapleader = "\\"
 let maplocalleader = "\\"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Manipulating this file easily
-" (Courtesy of "Learn Vimscript the hard way")
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vimscript {{{
 
+" Manipulating this file easily
+" (Courtesy of Steve Losh's "Learn Vimscript the hard way")
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Random options
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Global options {{{
 
 set number
 
@@ -96,35 +107,33 @@ set autoread
 " increase command history
 set history=1000
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tmux {{{
+
 " Resize vim windows from tmux
 " from http://usevim.com/2014/08/11/script-roundup/
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 set ttyfast
 if !has('nvim')
     set ttymouse=xterm2
 endif
 set mouse=a
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Random mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-map <Leader>m :Make<return>
+" }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Les gouts et les couleurs
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Les gouts et les couleurs {{{
 
 " vintage style
 "colorscheme peachpuff
 
 colorscheme solarized
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" GUI-specifics
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GUI-specifics {{{
 
 " MacVim registers as "Vim"
 if v:progname =~? "gvim" || v:progname ==# "Vim"
@@ -132,9 +141,10 @@ if v:progname =~? "gvim" || v:progname ==# "Vim"
     set columns=84
 endif
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Default indentation rules
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Default indentation rules {{{
 
 set autoindent
 set smartindent
@@ -143,14 +153,12 @@ set smartindent
 " line
 set smarttab
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Programming
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
 
-" try to recognize file types and load associated plugins and indent files
-filetype plugin indent on
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Programming {{{
 
-syntax on
+nnoremap <leader>m :Make<cr>
 
 function! EnableSyntaxFolding()
     setl foldmethod=syntax
@@ -228,17 +236,19 @@ if v:version > 703 || v:version == 703 && has('patch541')
     set formatoptions+=j
 endif
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ack, Ag and co
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ack, Ag and co {{{
 
 if executable("ag") == 1
     let g:ackprg='ag --vimgrep'
 endif
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FSwitch plugin - switch between header and implementation files
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FSwitch plugin - switch between header and implementation files {{{
 
 au BufNewFile,BufRead *.c let b:fswitchdst = 'h' | let b:fswitchlocs = '.'
 au BufNewFile,BufRead *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
@@ -273,9 +283,10 @@ nmap <silent> <Leader>oj :FSBelow<cr>
 " Switch to the file and load it into a new window split below 
 nmap <silent> <Leader>oJ :FSSplitBelow<cr>
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Todo list helpers
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Todo list helpers {{{
 
 let s:todoMarkers = [ '_', '*', 'X' ]
 
@@ -317,9 +328,10 @@ function! TodoMode()
     call SetSteveLoshIndentFolding()
 endfunction
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General fold-related customizations
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Folding {{{
 
 " Remove ugly underline on folds.
 highlight Folded term=bold cterm=bold ctermfg=12 ctermbg=0 guifg=Cyan guibg=DarkGrey
@@ -341,9 +353,10 @@ function! NeatFoldText()
 endfunction
 set foldtext=NeatFoldText()
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Steve Losh's indent folding mode
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Steve Losh's indent folding mode {{{
 " Copied from "Learn vimscript the hard way" (c) Steve Losh
 
 function! IndentLevel(lnum)
@@ -387,9 +400,10 @@ function! SetSteveLoshIndentFolding()
     setlocal foldmethod=expr
 endfunction
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-go
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-go {{{
 
 let g:go_fmt_command = "goimports"
 
@@ -398,16 +412,20 @@ au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vimwiki
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vimwiki {{{
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Fuzzy finder
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fuzzy finder {{{
 
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>t :Tags<cr>
+
+" }}}
