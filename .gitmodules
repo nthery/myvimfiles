@@ -73,3 +73,6 @@
 [submodule "bundle/vim-interestingwords"]
 	path = bundle/vim-interestingwords
 	url = https://github.com/lfv89/vim-interestingwords.git
+[submodule "bundle/indentLine"]
+	path = bundle/indentLine
+	url = https://github.com/Yggdroot/indentLine.git

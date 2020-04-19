@@ -422,6 +422,12 @@ endfunction
 " }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" indentLine plugin {{{
+
+let g:indentLine_enabled = 0
+nnoremap <leader>I :IndentLinesToggle<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-go {{{
 
 let g:go_fmt_command = "goimports"
