@@ -70,3 +70,6 @@
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "bundle/vim-interestingwords"]
+	path = bundle/vim-interestingwords
+	url = https://github.com/lfv89/vim-interestingwords.git
