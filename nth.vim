@@ -457,3 +457,11 @@ nnoremap <leader>f :Files<cr>
 nnoremap <leader>t :Tags<cr>
 
 " }}}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use builtin man plugin {{{
+
+if filereadable(expand("$VIMRUNTIME/ftplugin/man.vim"))
+    source $VIMRUNTIME/ftplugin/man.vim
+    nnoremap K :Man <cword><cr>
+endif
