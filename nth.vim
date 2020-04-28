@@ -374,6 +374,8 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Steve Losh's indent folding mode {{{
 " Copied from "Learn vimscript the hard way" (c) Steve Losh
@@ -427,6 +429,8 @@ endfunction
 let g:indentLine_enabled = 0
 nnoremap <leader>I :IndentLinesToggle<cr>
 
+" }}}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-go {{{
 
@@ -465,3 +469,5 @@ if filereadable(expand("$VIMRUNTIME/ftplugin/man.vim"))
     source $VIMRUNTIME/ftplugin/man.vim
     nnoremap K :Man <cword><cr>
 endif
+
+" }}}
