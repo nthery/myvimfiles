@@ -294,35 +294,44 @@ nnoremap <silent> <leader>oJ :FSSplitBelow<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Todo list helpers {{{
 
-let s:todoMarkers = [ '_', '*', 'X' ]
+let g:todoMarkers = [ '_', '*', 'X' ]
 
 function! CycleTodoMarker(lnum)
-    " Try to match marker at beginning of line
+    let l:todoMarkers = g:todoMarkers
+    if exists("b:todoMarkers")
+        let l:todoMarkers = b:todoMarkers
+    endif
+
+    " Try to match marker at beginning of line or markdown list item
     let l:cline = getline(a:lnum)
-    let l:ml = matchlist(l:cline, '\v^\s*\[(.)\]')
+    let l:ml = matchlist(l:cline, '\v^(#* |\s*(- )?)\[([^]]+)\]')
+    let l:marker = ""
+    if ml != []
+        let l:marker = l:ml[3]
+    endif
 
     " No match? insert initial marker.
-    if ml == []
-        let l:ml = matchlist(l:cline, '\v^(\s*)(.*)')
-        call setline(a:lnum, l:ml[1] . '[' . s:todoMarkers[0] . '] ' . l:ml[2])
+    if marker == ""
+        let l:ml = matchlist(l:cline, '\v^(#* |\s*(- )?)(\S.*)')
+        call setline(a:lnum, l:ml[1] . '[' . l:todoMarkers[0] . '] ' . l:ml[3])
         return
     endif
 
     " Unknown marker? do nothing
-    let l:i = index(s:todoMarkers, l:ml[1])
+    let l:i = index(l:todoMarkers, l:marker)
     if l:i == -1
         return
     endif
 
     " Last marker? remove it
     let l:i += 1
-    if l:i == len(s:todoMarkers)
-        call setline(a:lnum, substitute(l:cline, '\[[^]]\] ', '', ''))
+    if l:i == len(l:todoMarkers)
+        call setline(a:lnum, substitute(l:cline, '\v\[[^]]+\] ', '', ''))
         return
     endif
 
     " Replace current marker with next one
-    call setline(a:lnum, substitute(l:cline, l:ml[1], s:todoMarkers[l:i], ''))
+    call setline(a:lnum, substitute(l:cline, l:marker, l:todoMarkers[l:i], ''))
 endfunction
 
 function! TodoMode()
