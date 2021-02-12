@@ -1,9 +1,6 @@
 [submodule "bundle/pathogen"]
 	path = bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "bundle/vimoutliner"]
-	path = bundle/vimoutliner
-	url = https://github.com/vimoutliner/vimoutliner.git
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -49,9 +46,6 @@
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
-[submodule "bundle/vim-orgmode"]
-	path = bundle/vim-orgmode
-	url = https://github.com/jceb/vim-orgmode.git
 [submodule "bundle/fzf.vim"]
 	path = bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
