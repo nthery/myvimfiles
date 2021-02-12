@@ -498,4 +498,25 @@ let g:syntastic_mode_map = {
     \ "passive_filetypes": ["c", "c++"] }
 
 " }}}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Markdown TODO markers {{{
+
+function! MarkdownTodo()
+    let b:todoMarkers = ['TODO', 'WIP', 'DONE']
+    match Todo /\v\[(TODO|WIP|WAIT)\]/
+    noremap <buffer> <localleader>t :call CycleTodoMarker('.')<cr>
+    vnoremap <buffer> <localleader>t :call CycleTodoMarker('.')<cr>
+endfunction
+
+function! GrepTodoFn()
+    execute "Ack! '\\[(TODO|WIP|WAIT)]' %"
+endfunction
+command! GrepTodo :call GrepTodoFn()
+
+augroup Markdown
+    autocmd!
+    autocmd BufNew,BufRead *.md call MarkdownTodo()
+augroup end
+
 " }}}
