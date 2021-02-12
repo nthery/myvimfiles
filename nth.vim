@@ -456,16 +456,6 @@ augroup END
 " }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vimwiki {{{
-
-" We do not use vimwiki for time being so make sure it does not trigger for
-" markdown files.
-let g:vimwiki_list = []
-" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-
-" }}}
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fuzzy finder {{{
 
 nnoremap <leader>b :Buffers<cr>
