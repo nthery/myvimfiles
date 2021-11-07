@@ -16,9 +16,6 @@
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = https://github.com/sjl/gundo.vim.git
 [submodule "bundle/tbone"]
 	path = bundle/tbone
 	url = https://github.com/tpope/vim-tbone.git
