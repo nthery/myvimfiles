@@ -67,3 +67,6 @@
 [submodule "bundle/souffle.vim"]
 	path = bundle/souffle.vim
 	url = https://github.com/souffle-lang/souffle.vim.git
+[submodule "bundle/undotree"]
+	path = bundle/undotree
+	url = https://github.com/mbbill/undotree
