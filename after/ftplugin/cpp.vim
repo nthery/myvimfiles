@@ -38,3 +38,7 @@ setl indentexpr=IndentNamespace()
 
 setl cindent
 setl cino=:0g0(0
+
+" Support Doxygen-style comments
+setl comments-=://
+setl comments+=:///,://

@@ -11,3 +11,7 @@ setl noexpandtab
 
 setl cindent
 setl cino=:0+2s(0
+
+" Support Doxygen-style comments
+setl comments-=://
+setl comments+=:///,://
