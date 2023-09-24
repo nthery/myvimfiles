@@ -73,6 +73,3 @@
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule "bundle/vim-better-sml"]
-	path = bundle/vim-better-sml
-	url = https://github.com/jez/vim-better-sml.git
