@@ -250,6 +250,24 @@ nnoremap <leader>a :Ack!<space>
 " }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Grepper {{{
+
+" Open Grepper prompt.
+nnoremap <leader>g :Grepper -tool rg<cr>
+
+" Search for word under cursor.
+nmap <leader>* :Grepper -tool rg -cword -noprompt<cr>
+
+" Search for selection.
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+let g:grepper               = {}
+let g:grepper.tools         = ['rg', 'git', 'grep', 'findstr']
+
+" }}}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FSwitch plugin - switch between header and implementation files {{{
 
 augroup fswitch
