@@ -184,6 +184,8 @@ command! -nargs=+ -complete=dir ArgsC args `find <args> -name '*.[ch]' -o -name 
 " Beautify multi-line C macros
 command! -range -nargs=1 AlignTrailingBackslash let atslash=@/ | <line1>,<line2> s!\s*\\!\=repeat(' ', <args> - col('.') - 2).' \'! | let @/=atslash
 
+command! TrimTrailingSpaces s/\s\+$//
+
 " highlight spaces at end of lines
 match Todo /\s\+$/
 
