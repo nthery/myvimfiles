@@ -368,6 +368,9 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding {{{
 
+" Unfold everything when opening file.
+set foldlevel=99
+
 " Remove ugly underline on folds.
 highlight Folded term=bold cterm=bold ctermfg=12 ctermbg=0 guifg=Cyan guibg=DarkGrey
 
