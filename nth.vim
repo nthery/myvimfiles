@@ -48,7 +48,9 @@ set viminfo=@100,/100,:100,'100,f1,<500
 set ignorecase smartcase
 
 " remove toolbar
-set guioptions=gmc
+if !has('nvim')
+    set guioptions=gmc
+endif
 
 " display possible completions above command line
 set wildmenu
