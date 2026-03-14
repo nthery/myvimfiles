@@ -5,9 +5,9 @@ setl textwidth=80
 
 call EnableSyntaxFolding()
 
-setl shiftwidth=4
-setl softtabstop=4
-setl expandtab
+if has('nvim') && exists('*v:lua.vim.lsp.omnifunc')
+  setlocal omnifunc=v:lua.vim.lsp.omnifunc
+endif
 
 "
 " Do not indent namespaces.
@@ -36,9 +36,15 @@ setl indentexpr=IndentNamespace()
 " Indentation options
 "
 
+setl shiftwidth=4
+setl softtabstop=4
+setl expandtab
+
 setl cindent
 setl cino=:0g0(0
 
 " Support Doxygen-style comments
 setl comments-=://
 setl comments+=:///,://
+
+
