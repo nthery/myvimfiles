@@ -7,3 +7,7 @@ Plugins are kept in submodules so after cloning this do:
 
 To use clone in ~/.vim/ (unix) or ~/vimfiles (Windows) and create .vimrc that
 sources nth.vim.
+
+To update all plugins to their tip do:
+
+	git submodule update --remote --rebase --recursive
