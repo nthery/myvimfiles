@@ -258,9 +258,10 @@ nnoremap <leader>a :Ack!<space>
 
 " Open Grepper prompt.
 nnoremap <leader>g :Grepper -tool rg<cr>
+nnoremap <leader>lg :Grepper -tool rg -noquickfix<cr>
 
 " Search for word under cursor.
-nmap <leader>* :Grepper -tool rg -cword -noprompt<cr>
+nmap <leader>] :Grepper -tool rg -cword -noprompt<cr>
 
 " Search for selection.
 nmap gs <plug>(GrepperOperator)
